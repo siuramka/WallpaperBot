@@ -7,13 +7,11 @@ using System.Xml.XPath;
 using WallpaperBot.Wallpapers.Clients.Unsplash.Contracts;
 using WallpaperBot.Wallpapers.Models.Clients.Parameters.Unsplash;
 using WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash;
+using WallpaperBot.Wallpapers.Services.Contracts;
 
 namespace WallpaperBot.Wallpapers.Services
 {
-    public interface IUnsplashService
-    {
-        Task<List<PhotoDownloadResponse>?> GetPopularPhotos();
-    }
+
     public class UnsplashService : IUnsplashService
     {
         private readonly IUnsplashPublicClient _client;
