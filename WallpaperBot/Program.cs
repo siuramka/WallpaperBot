@@ -4,6 +4,7 @@ using WallpaperBot.Wallpapers.Clients.Unsplash.Contracts;
 using WallpaperBot.Shared.Models.Config;
 using WallpaperBot.Wallpapers.Services;
 using WallpaperBot.Wallpapers.Clients.Unsplash;
+using WallpaperBot.Wallpapers.Services.Contracts;
 
 namespace WallpaperBot
 {
