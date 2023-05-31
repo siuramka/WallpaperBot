@@ -18,12 +18,12 @@ namespace WallpaperBot.Wallpapers
                       .AddJsonFile("appsettings.json", optional: false);
             IConfiguration config = builder.Build();
 
-            var test = config.GetSection("UnsplashSettings").Get<UnsplashSettings>();
+            var unsplashSettings = config.GetSection("UnsplashSettings").Get<UnsplashSettings>();
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IUnsplashService>()
                 .AddSingleton<IUnsplashPublicClient>(
-                        new UnsplashPublicClient(test.AccessKey, test.SecretKey)
+                        new UnsplashPublicClient(unsplashSettings.AccessKey, unsplashSettings.SecretKey)
                     )
             .BuildServiceProvider();
 
