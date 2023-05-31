@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash
 {
-    internal class PhotoDownloadResponse
+    public class PhotoDownloadResponse
     {
         public string url { get; set; }
     }

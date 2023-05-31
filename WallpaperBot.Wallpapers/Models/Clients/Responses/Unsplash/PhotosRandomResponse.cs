@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash
 {
-    internal class PhotosRandomResponse
+    public class PhotosRandomResponse
     {
         public string id { get; set; }
         public int width { get; set; }

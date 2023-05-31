@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WallpaperBot.Wallpapers", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WallpaperBot.Uploader", "WallpaperBot.Uploader\WallpaperBot.Uploader.csproj", "{891BA1D2-B4FE-44F7-8D93-D8FF84E84322}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D2C65BC9-2EA4-4423-AE12-BE0DD09EB257}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{891BA1D2-B4FE-44F7-8D93-D8FF84E84322}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{891BA1D2-B4FE-44F7-8D93-D8FF84E84322}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{891BA1D2-B4FE-44F7-8D93-D8FF84E84322}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2C65BC9-2EA4-4423-AE12-BE0DD09EB257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2C65BC9-2EA4-4423-AE12-BE0DD09EB257}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2C65BC9-2EA4-4423-AE12-BE0DD09EB257}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2C65BC9-2EA4-4423-AE12-BE0DD09EB257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

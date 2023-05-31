@@ -8,7 +8,7 @@ using WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash;
 
 namespace WallpaperBot.Wallpapers.Clients.Unsplash.Contracts
 {
-    internal interface IUnsplashPublicClient
+    public interface IUnsplashPublicClient
     {
         Task<List<PhotosRandomResponse>> GetPhotos(string? orderBy);
         Task<PhotoDownloadResponse> GetPhotoDownloadUrl(string photoId);

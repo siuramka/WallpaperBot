@@ -11,7 +11,7 @@ using WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash;
 
 namespace WallpaperBot.Wallpapers.Clients.Unsplash
 {
-    internal class UnsplashPublicClient : IUnsplashPublicClient, IDisposable
+    public class UnsplashPublicClient : IUnsplashPublicClient, IDisposable
     {
         private readonly RestClient _client;
         private string _baseUrl;
@@ -27,15 +27,15 @@ namespace WallpaperBot.Wallpapers.Clients.Unsplash
             orderBy = orderBy ?? OrderBy.Latest;
             string endpoint = $"/photos?order_by={orderBy}";
 
-            var response = await _client.GetJsonAsync<MultipleObjects<PhotosRandomResponse>>(endpoint);
-            return response!.Data;
+            var response = await _client.GetJsonAsync<List<PhotosRandomResponse>>(endpoint);
+            return response!;
         }
         public async Task<PhotoDownloadResponse> GetPhotoDownloadUrl(string photoId)
         {
             string endpoint = $"/photos/{photoId}/download";
 
-            var response = await _client.GetJsonAsync<SingleObject<PhotoDownloadResponse>>(endpoint);
-            return response!.Data;
+            var response = await _client.GetJsonAsync<PhotoDownloadResponse>(endpoint);
+            return response;
         }
         record SingleObject<T>(T Data);
         record MultipleObjects<T>(List<T> Data);

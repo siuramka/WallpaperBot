@@ -9,11 +9,11 @@ using WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash;
 
 namespace WallpaperBot.Wallpapers.Services
 {
-    internal interface IUnsplashService
+    public interface IUnsplashService
     {
         Task<List<PhotosRandomResponse>?> GetPopularPhotos();
     }
-    internal class UnsplashService : IUnsplashService
+    public class UnsplashService : IUnsplashService
     {
         private readonly IUnsplashPublicClient _client;
         public UnsplashService(IUnsplashPublicClient client)

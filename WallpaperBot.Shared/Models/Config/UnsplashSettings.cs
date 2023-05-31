@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WallpaperBot.Wallpapers.Models
+namespace WallpaperBot.Shared.Models.Config
 {
-    internal class UnsplashSettings
+    public class UnsplashSettings
     {
         public string AccessKey { get; set; }
         public string SecretKey { get; set; }

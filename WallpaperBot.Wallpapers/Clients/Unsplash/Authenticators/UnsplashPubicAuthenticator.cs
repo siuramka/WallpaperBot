@@ -9,7 +9,7 @@ using WallpaperBot.Wallpapers.Clients.Unsplash.Contracts;
 
 namespace WallpaperBot.Wallpapers.Clients.Unsplash.Authenticators
 {
-    internal class UnsplashPubicAuthenticator : AuthenticatorBase
+    public class UnsplashPubicAuthenticator : AuthenticatorBase
     {
         readonly string _baseUrl;
         readonly string _accessKey;
