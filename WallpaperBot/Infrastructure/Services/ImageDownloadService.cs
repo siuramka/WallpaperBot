@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +21,19 @@ namespace WallpaperBot.Infrastructure.Services
         {
             _unsplashService = unsplashService;
         }
-
-        async Task IImageDownloadService.DownloadImagesAsync()
+        public async Task DownloadImagesAsync()
         {
-            var co = await _unsplashService.GetPopularPhotos();
-            var xo = 0;
+            RestClient restClient = new RestClient();
+            var imageUrls = await _unsplashService.GetPopularPhotos();
+            //
+
+            foreach (var imageDownload in imageUrls)
+            {
+                var request = new RestRequest(imageDownload.url, Method.Get);
+                var fileBytes = await restClient.DownloadDataAsync(request);
+                File.WriteAllBytes(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\WallpaperBot.Shared\Storage\Wallpapers") + "image.jpg", fileBytes);
+            }
+
         }
     }
 }

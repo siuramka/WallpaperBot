@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Assets\Wallpapers\" />
-    <Folder Include="Assets\Overlays\" />
+    <Folder Include="Storage\Wallpapers\" />
+    <Folder Include="Storage\Overlays\" />
   </ItemGroup>
 
 </Project>

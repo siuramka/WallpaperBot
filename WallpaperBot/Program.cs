@@ -5,6 +5,7 @@ using WallpaperBot.Shared.Models.Config;
 using WallpaperBot.Wallpapers.Services;
 using WallpaperBot.Wallpapers.Clients.Unsplash;
 using WallpaperBot.Wallpapers.Services.Contracts;
+using WallpaperBot.Infrastructure.Services;
 
 namespace WallpaperBot
 {
@@ -24,10 +25,11 @@ namespace WallpaperBot
                         new UnsplashPublicClient(unsplashSettings.AccessKey, unsplashSettings.SecretKey)
                     )
                 .AddSingleton<IUnsplashService, UnsplashService>()
+                .AddSingleton<IImageDownloadService, ImageDownloadService>()
             .BuildServiceProvider();
 
-            var test = serviceProvider.GetService<IUnsplashService>();
-            var ok = await test.GetPopularPhotos();
+            var test = serviceProvider.GetService<IImageDownloadService>();
+            await test.DownloadImagesAsync();
             var okk = 123;
         }
     }
