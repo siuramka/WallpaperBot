@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WallpaperBot.Wallpapers": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  wallpaperbot.wallpapers:
+    image: ${DOCKER_REGISTRY-}wallpaperbotwallpapers
+    build:
+      context: .
+      dockerfile: WallpaperBot.Wallpapers/Dockerfile
