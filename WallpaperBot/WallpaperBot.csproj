@@ -18,7 +18,8 @@
 	    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Infrastructure\Services\Contracts\NewFolder\" />
+	</ItemGroup>
 
 </Project>
