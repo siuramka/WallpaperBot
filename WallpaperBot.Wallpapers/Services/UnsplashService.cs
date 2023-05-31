@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.XPath;
 using WallpaperBot.Wallpapers.Clients.Unsplash.Contracts;
 using WallpaperBot.Wallpapers.Models.Clients.Parameters.Unsplash;
 using WallpaperBot.Wallpapers.Models.Clients.Responses.Unsplash;
@@ -11,7 +12,7 @@ namespace WallpaperBot.Wallpapers.Services
 {
     public interface IUnsplashService
     {
-        Task<List<PhotosRandomResponse>?> GetPopularPhotos();
+        Task<List<PhotoDownloadResponse>?> GetPopularPhotos();
     }
     public class UnsplashService : IUnsplashService
     {
@@ -21,13 +22,21 @@ namespace WallpaperBot.Wallpapers.Services
             _client = client;
         }
         //should use a new model instead of PhotosRandomResponse
-        public async Task<List<PhotosRandomResponse>?> GetPopularPhotos()
+        public async Task<List<PhotoDownloadResponse>?> GetPopularPhotos()
         {
             try
             {
                 var popularPhotos = await _client.GetPhotos(OrderBy.Popular);
-                var photoDownloadUrl = await _client.GetPhotoDownloadUrl(popularPhotos[0].id);
-                return popularPhotos;
+
+                List<PhotoDownloadResponse> result = new List<PhotoDownloadResponse>();
+
+                await Parallel.ForEachAsync(popularPhotos, async (photo, token) =>
+                {
+                    var downloadUrl = await _client.GetPhotoDownloadUrl(photo.id);
+                    result.Add(downloadUrl);
+                });
+
+                return result;
             }
             catch (Exception ex)
             {
