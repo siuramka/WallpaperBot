@@ -69,44 +69,44 @@ async function convertImageToVideo(imagePath, images, outputPath, outputName) {
 async function introPipeOne() {
     const textFiles = await fs.promises.readdir(intro_images_text_dir_path);
     const files = await fs.promises.readdir(intro_images_dir_path);
-  
+
     for (const file of files) {
-      if (file.split(".").length > 1) {
-        try {
-          const randomTextFile =
-            textFiles[Math.floor(Math.random() * textFiles.length)];
-          await cropImageToIphoneSize(file, intro_images_dir_path);
-          await writeTextToImage(file, randomTextFile);
-        } catch (e) {
-          console.error(e);
-          throw e;
+        if (file.split(".").length > 1) {
+            try {
+                const randomTextFile =
+                    textFiles[Math.floor(Math.random() * textFiles.length)];
+                await cropImageToIphoneSize(file, intro_images_dir_path);
+                await writeTextToImage(file, randomTextFile);
+            } catch (e) {
+                console.error(e);
+                throw e;
+            }
         }
-      }
     }
-  }
-  
-  async function introPipeTwo() {
+}
+
+async function introPipeTwo() {
     console.log("here");
     const inputPath = intro_images_dir_path + "/with_text";
     const files = await fs.promises.readdir(inputPath);
-  
+
     for (const file of files) {
-      const name = file.split(".")[0];
-      if (file.split(".").length > 1) {
-        try {
-          await convertImageToVideo(
-            inputPath,
-            file,
-            intro_video_output_dir,
-            "video_" + name
-          );
-        } catch (e) {
-          console.error(e);
-          throw e;
+        const name = file.split(".")[0];
+        if (file.split(".").length > 1) {
+            try {
+                await convertImageToVideo(
+                    inputPath,
+                    file,
+                    intro_video_output_dir,
+                    "video_" + name
+                );
+            } catch (e) {
+                console.error(e);
+                throw e;
+            }
         }
-      }
     }
-  }
+}
 
 async function introPipeline() {
     await introPipeOne();
