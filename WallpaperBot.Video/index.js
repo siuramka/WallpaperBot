@@ -65,8 +65,7 @@ async function duplicateImageOverlay(image) {
 //image or single images
 async function convertImageToVideo(imagePath, images, outputPath, outputName) {
     const output = outputPath + "/video/" + outputName;
-    const command = `ffmpeg -r 1/5 -i ${imagePath + "/" + images
-        } -c:v libx264 -pix_fmt yuv422p ${output}.mp4`;
+    const command = `ffmpeg -loop 1 -i ${imagePath + "/" + images} -c:v libx264 -t 2 -pix_fmt yuv422p ${output}.mp4`
     await executeFfmpegCommand(command);
 }
 
@@ -141,9 +140,14 @@ async function slideshowPipeOne() {
     }
 }
 
+async function combineIntroSlideshow() {
+
+}
+
 async function run() {
-    await slideshowPipeOne();
-    await imagesToSlideshowVideo("overlayedimage%03d")
+    // await slideshowPipeOne();
+    // await imagesToSlideshowVideo("overlayedimage%03d")
+    await introPipeline();
 }
 // need to fix or just add -y  flag to ffmpeg commands
 // to remove bug, if output image already exists, it waits for user command(freezezs theexecution ;9)
